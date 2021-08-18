@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Đổi tiền tệ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Chuyển đổi tiền tệ</h1>
+        <div class="row">
+            <div class="col-2">Số lượng:</div>
+            <div class="col-6"><input type="number" id="soluong"></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Từ:</div>
+            <div class="col-6">
+                <select id="tu">
+                    <option value=""> -- Chọn -- </option>
+                    <option value="usd">USD</option>
+                    <option value="euro">EURO</option>
+                    <option value="te">Nhân dân tệ</option>
+                    <option value="yen">Yên Nhật</option>
+                    <option value="vnd">Việt Nam Đồng (VND)</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">Sang:</div>
+            <div class="col-6">
+                <select id="sang">
+                    <option value=""> -- Chọn -- </option>  
+                    <option value="vnd">Việt Nam Đồng (VND)</option>
+                    <option value="usd">USD</option>
+                    <option value="euro">EURO</option>
+                    <option value="te">Nhân dân tệ</option>
+                    <option value="yen">Yên Nhật</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-primary chuyenDoi" onclick="convert()">Chuyển đổi</button>
+    </div>
+    <h4 id="result"></h4>
+       
+    <script>
+        function convert() {
+            var soluong = parseInt(document.getElementById('soluong').value);
+            var tu = document.getElementById('tu').value;
+            var sang = document.getElementById('sang').value;
+            if(tu == sang) {
+                document.getElementById('result').innerHTML = soluong+sang;
+            }
+            if(tu=='usd' && sang=='vnd') {
+                var result = soluong*23000;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='usd' && sang=='euro') {
+                var result = soluong*0.85;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='usd' && sang=='te') {
+                var result = soluong*6.48;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='usd' && sang=='yen') {
+                var result = soluong*109.86;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+
+            if(tu=='euro' && sang=='vnd') {
+                var result = soluong*26715.25;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='euro' && sang=='usd') {
+                var result = soluong*1.17;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='euro' && sang=='te') {
+                var result = soluong*7.6;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='euro' && sang=='yen') {
+                var result = soluong*128.67;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+
+            if(tu=='te' && sang=='vnd') {
+                var result = soluong*3517.28;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='te' && sang=='usd') {
+                var result = soluong*0.15;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='te' && sang=='euro') {
+                var result = soluong*0.13;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='te' && sang=='yen') {
+                var result = soluong*16.94;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+
+            if(tu=='yen' && sang=='vnd') {
+                var result = soluong*207.61;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='yen' && sang=='usd') {
+                var result = soluong*0.0091;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='yen' && sang=='euro') {
+                var result = soluong*0.0078;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='yen' && sang=='te') {
+                var result = soluong*0.059;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+
+            if(tu=='vnd' && sang=='yen') {
+                var result = soluong*0.0048;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='vnd' && sang=='usd') {
+                var result = soluong*0.000044;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='vnd' && sang=='euro') {
+                var result = soluong*0.000037;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+            if(tu=='vnd' && sang=='te') {
+                var result = soluong*0.00028;
+                document.getElementById('result').innerHTML = result+sang;
+            }
+        }
+    </script>
+</body>
+</html>

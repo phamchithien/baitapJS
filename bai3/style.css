@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.row {
+    padding: 1%;
+}
+.chuyenDoi {
+    margin-left: 12%;
+    margin-top: 3%;
+}
