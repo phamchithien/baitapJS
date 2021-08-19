@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Dua xe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Đua xe</h1>
+        <div class="row street1">
+            <img src="image/car.png" alt="" class="car car1" id="car1">
+        </div>
+        <div class="row street2">
+            <img src="image/car.png" alt="" class="car car2" id="car2">
+        </div>
+        <div class="row street3">
+            <img src="image/car.png" alt="" class="car car3" id="car3">
+        </div>
+        <button type="button" onclick="start()" class="btn btn-outline-primary">Start</button>
+    </div>
+
+    <script>
+        function start() {
+            let id1 = null;
+            let id2 = null;
+            let id3 = null;
+            const elem1 = document.getElementById("car1");
+            const elem2 = document.getElementById("car2");
+            const elem3 = document.getElementById("car3");   
+            let stop1 = 0;
+            let stop2 = 0;
+            let stop3 = 0;
+            id1 = setInterval(run1, Math.floor(Math.random() * 70) + 10);
+            id2 = setInterval(run2, Math.floor(Math.random() * 70) + 10);
+            id3 = setInterval(run3, Math.floor(Math.random() * 70) + 10);
+            function run1() {
+                if (stop1 == 100) {
+                    clearInterval(id1);
+                } else {
+                    stop1++;
+                    elem1.style.left = stop1 + "%";
+                }
+            }
+            function run2() {
+                if (stop2 == 100) {
+                    clearInterval(id2);
+                } else {
+                    stop2++;
+                    elem2.style.left = stop2 + "%";
+                }
+            }
+            function run3() {
+                if (stop3 == 100) {
+                    clearInterval(id3);
+                } else {
+                    stop3++;
+                    elem3.style.left = stop3 + "%";
+                }
+            }
+        }
+        </script>
+</body>
+</html>
