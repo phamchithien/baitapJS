@@ -12,4 +12,46 @@
 }
 .btn {
     margin-left: 45%;
+    margin-bottom: 5%;
+}
+#wincar1 {
+    position: absolute;
+    top: 15%;
+    left: 90%;
+}
+#wincar2 {
+    position: absolute;
+    top: 25%;
+    left: 90%;
+}
+#wincar3 {
+    position: absolute;
+    top: 33%;
+    left: 90%;
+}
+#top0, #top1, #top2 {
+    margin-left: 2%;
+}
+.cowin {
+    width: 20%;
+}
+@media screen and (max-width: 992px) {
+    .cowin {
+        width: 20%;
+    }
+    #wincar1 {
+        position: absolute;
+        top: 10%;
+        left: 87%;
+    }
+    #wincar2 {
+        position: absolute;
+        top: 17%;
+        left: 87%;
+    }
+    #wincar3 {
+        position: absolute;
+        top: 23%;
+        left: 87%;
+    }
 }

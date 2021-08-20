@@ -15,19 +15,51 @@
     <div class="container">
         <h1 class="text-center">Đua xe</h1>
         <div class="row street1">
-            <img src="image/car.png" alt="" class="car car1" id="car1">
+            <img src="image/car1.png" alt="" class="car car1" id="car1">
         </div>
         <div class="row street2">
-            <img src="image/car.png" alt="" class="car car2" id="car2">
+            <img src="image/car2.png" alt="" class="car car2" id="car2">
         </div>
         <div class="row street3">
-            <img src="image/car.png" alt="" class="car car3" id="car3">
+            <img src="image/car3.png" alt="" class="car car3" id="car3">
         </div>
         <button type="button" onclick="start()" class="btn btn-outline-primary">Start</button>
     </div>
+    <div class="container">
+        <div id="wincar1">
+            <img src="image/win.png" alt="" class="cowin">
+        </div>
+        <div id="wincar2">
+            <img src="image/win.png" alt="" class="cowin">
+        </div>
+        <div id="wincar3">
+            <img src="image/win.png" alt="" class="cowin">
+        </div>
+        <div class="bangxephang">
+            <h4>Bảng xếp hạng</h4>
+            <div class="row">
+                <p><b>Top 1: </b></p><span id="top0"></span>
+            </div>
+            <div class="row">
+                <p><b>Top 2: </b></p><span id="top1"></span>
+            </div>
+            <div class="row">
+                <p><b>Top 3: </b></p><span id="top2"></span>
+            </div>
+        </div>
+    </div>
 
     <script>
+        $("#wincar1").hide();
+        $("#wincar2").hide();
+        $("#wincar3").hide();
         function start() {
+            $("#wincar1").hide();
+            $("#wincar2").hide();
+            $("#wincar3").hide();
+            document.getElementById('top0').innerHTML="";
+            document.getElementById('top1').innerHTML="";
+            document.getElementById('top2').innerHTML="";
             let id1 = null;
             let id2 = null;
             let id3 = null;
@@ -37,9 +69,48 @@
             let stop1 = 0;
             let stop2 = 0;
             let stop3 = 0;
-            id1 = setInterval(run1, Math.floor(Math.random() * 70) + 10);
-            id2 = setInterval(run2, Math.floor(Math.random() * 70) + 10);
-            id3 = setInterval(run3, Math.floor(Math.random() * 70) + 10);
+            let speedcar1=Math.floor(Math.random() * 70) + 10;
+            let speedcar2=Math.floor(Math.random() * 70) + 10;
+            let speedcar3=Math.floor(Math.random() * 70) + 10;
+            const speedcar = [speedcar1,speedcar2,speedcar3];
+            const speedcarwin = [speedcar1,speedcar2,speedcar3];
+            speedcarwin.sort(function(a, b){return a - b});
+            console.log(speedcarwin);
+            for(let i=0; i<speedcarwin.length; i++) {
+                setTimeout(function() {
+                    for(let j=0; j<speedcar.length; j++){
+                        if(speedcarwin[i] == speedcar[j]){
+                            console.log(speedcar[j]);
+                            if(j==0)
+                                document.getElementById("top"+i).innerHTML = 'XE ĐỎ';
+                            if(j==1)
+                                document.getElementById("top"+i).innerHTML = 'XE XÁM';
+                            if(j==2)
+                                document.getElementById("top"+i).innerHTML = 'XE ĐEN';
+                        }
+                    }
+                },speedcarwin[i]*100);
+            }
+            let carwin = speedcarwin[0];
+            console.log(carwin);
+            if(carwin === speedcar1){
+                setTimeout(function() {
+                    $("#wincar1").show();
+                }, carwin*100);
+            }
+            if(carwin === speedcar2){
+                setTimeout(function() {
+                    $("#wincar2").show();
+                }, carwin*100);
+            }
+            if(carwin === speedcar3){
+                setTimeout(function() {
+                    $("#wincar3").show();
+                }, carwin*100);
+            }
+            id1 = setInterval(run1, speedcar1);
+            id2 = setInterval(run2, speedcar2);
+            id3 = setInterval(run3, speedcar3);
             function run1() {
                 if (stop1 == 100) {
                     clearInterval(id1);
